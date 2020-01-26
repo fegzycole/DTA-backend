@@ -26,5 +26,10 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
+  Product.prototype.getId = function getId() {
+    const { id } = this.dataValues;
+    return id;
+  };
+
   return Product;
 };
