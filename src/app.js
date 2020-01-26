@@ -1,3 +1,4 @@
+import '@babel/polyfill';
 import express from 'express';
 import bodyParser from 'body-parser';
 import { config } from 'dotenv';
@@ -10,6 +11,12 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use('/products', routes)
+
+app.get('/', (req, res) => {
+  res.status(200).json({
+    message: 'Welcome to my implementation of the Ven10 challenge'
+  })
+})
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
