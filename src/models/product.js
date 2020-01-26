@@ -31,5 +31,11 @@ module.exports = (sequelize, DataTypes) => {
     return id;
   };
 
+  Product.prototype.getRequiredDataValues = function getRequiredDataValues() {
+    const { name, id, price } = this.dataValues;
+    const data = { name, id, price }
+    return data;
+  };
+
   return Product;
 };

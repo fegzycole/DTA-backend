@@ -22,3 +22,17 @@ export const getProduct = async (req, res) => {
     return errResponse(res, 500, error.message);
   }
 };
+
+export const getProducts = async (req, res) => {
+  try {
+    const data = [];
+    const products = await Product.findAll();
+    products.forEach((product) => {
+      data.push(product.getRequiredDataValues());
+    })
+
+    return successResponse(res, 201, data);
+  } catch (error) {
+    return errResponse(res, 500, error.message);
+  }
+};
