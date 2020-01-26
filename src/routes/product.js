@@ -1,16 +1,16 @@
 import { Router } from 'express';
-import { validateProduct, isImageUploaded } from '../middleware/validation';
+import {
+  validateProduct,
+  isImageUploaded,
+  validateId
+} from '../middleware/validation';
 import uploadImage from '../middleware/imageUpload';
-import addProduct from '../controller/product.controller';
+import { addProduct, getProduct } from '../controller/product.controller';
 
 const router = Router();
 
-router.post(
-  '/',
-  uploadImage,
-  isImageUploaded,
-  validateProduct,
-  addProduct
-);
+router.post('/', uploadImage, isImageUploaded, validateProduct, addProduct);
+
+router.get('/:id', validateId, getProduct);
 
 export default router;

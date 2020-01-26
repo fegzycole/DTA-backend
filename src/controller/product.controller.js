@@ -2,7 +2,7 @@ import models from '../models';
 import { errResponse, successResponse } from '../utils/util';
 const { Product } = models;
 
-const addProduct = async (req, res) => {
+export const addProduct = async (req, res) => {
   try {
     const { ...props } = req.body;
     const product = await Product.create(props);
@@ -13,4 +13,12 @@ const addProduct = async (req, res) => {
   }
 };
 
-export default addProduct;
+export const getProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const product = await Product.findOne({ where: { id } });
+    return successResponse(res, 201, product);
+  } catch (error) {
+    return errResponse(res, 500, error.message);
+  }
+};

@@ -5,6 +5,9 @@ const validationRules = {
     price: 'required|integer',
     category: 'required|string',
     color: 'required|string'
+  },
+  productId: {
+    id: 'required|integer'
   }
 }
 
