@@ -10,7 +10,7 @@
     "babel-build": "babel src -d dist",
     "clean": "rm -rf dist && mkdir dist",
     "build": "npm run clean && npm run babel-build",
-    "heroku-postbuild": "npm run build && npm run migration && npm start",
+    "heroku-postbuild": "npm run build",
     "migration": "npx sequelize-cli db:migrate"
   },
   "keywords": [],
